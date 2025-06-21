@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katinat - Trang chủ</title>
+    <!-- Nhúng Tailwind CSS CDN để styling nhanh chóng và responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Phông chữ Inter từ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icon từ Lucide React, chúng ta sẽ dùng inline SVG để đảm bảo hiển thị -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Nền nhẹ nhàng */
+        }
+        /* Custom CSS cho animation/transition nếu cần */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Styles cho Image Slider */
+        .slider-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0; /* Mặc định ẩn */
+            transition: opacity 0 ease-in-out; /* Hiệu ứng chuyển đổi */
+            z-index: 0;
+        }
+
+        .slider-image.active {
+            opacity: 1; /* Hiển thị ảnh đang hoạt động */
+            z-index: 1; /* Đảm bảo ảnh hoạt động nằm trên */
+        }
+
+        /* Ẩn menu mobile theo mặc định */
+        #mobile-menu {
+            display: none;
+        }
+        /* Khi menu mobile được mở */
+        #mobile-menu.open {
+            display: block;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-orange-600">
+                <!-- Đây là một placeholder cho logo. Bạn có thể thay bằng ảnh logo Katinat -->
+                <img src="logo-katinat/logo-katinat.png" alt="Katinat Logo" class="h-10 rounded">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-300">Trang chủ</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-300">Thực đơn</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-300">Cửa hàng</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-300">Tin tức</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-300">Tuyển dụng</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-300">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Button (Hamburger Icon) -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-full bg-orange-100 text-orange-600 hover:bg-orange-200 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                    <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden bg-white py-4 shadow-lg">
+            <ul class="flex flex-col items-center space-y-4">
+                <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium text-lg transition-colors duration-300">Trang chủ</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium text-lg transition-colors duration-300">Thực đơn</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium text-lg transition-colors duration-300">Cửa hàng</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium text-lg transition-colors duration-300">Tin tức</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium text-lg transition-colors duration-300">Tuyển dụng</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-orange-600 font-medium text-lg transition-colors duration-300">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section (Phần banner lớn có thanh trượt) -->
+    <section class="relative h-screen flex items-center justify-center text-white overflow-hidden fade-in">
+        <!-- Background Image Slider Container -->
+        <div id="hero-slider" class="absolute inset-0 w-full h-full">
+            <img src="KAT_BANNER-WEB_BGDN.jpg" alt="Katinat Cafe Interior 1" class="slider-image active">
+            <img src="KAT_NEWBRANDING_COVERFB_3-scaled.jpg" alt="Katinat Cafe Exterior 2" class="slider-image">
+            <img src="KAT_WEBSITE-BANNER.jpg" alt="Katinat Coffee Beans 3" class="slider-image">
+            <img src="KAT_BANNER-WEB_OBL.jpg" alt="Katinat Drink Closeup 4" class="slider-image">
+			<img src="KMDN_BANNER-WEB.jpg" alt="Katinat Drink Closeup 4" class="slider-image">
+			<img src="KAT_SOCIAL-MINI-APP-MOMO_BANNER-WEB.jpg" alt="Katinat Drink Closeup 4" class="slider-image">
+       <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all duration-300 z-30">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-all duration-300 z-30">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+
+    <div id="slider-indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
+        </div>
+</div>
+
+        <div class="absolute inset-0 bg-black opacity-40 z-10"></div> <!-- Overlay mờ -->
+
+        
+    </section>
+
+    <!-- Menu Section (Phần sản phẩm/thực đơn) -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Thực đơn nổi bật</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 - Cập nhật ảnh placeholder -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="475973662_611973951531469_5358161640542470386_n.jpg" alt="Capuccino" class="w-full h-65 object-center">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-900">Oolong Ba Lá</h3>
+                        <p class="text-gray-600 mb-4">Trà Sữa Oolong đậm đà, thuần khiết, thơm thanh hương hoa cỏ.</p>
+                        <span class="text-orange-600 font-bold text-xl">45.000 VNĐ</span>
+                    </div>
+                </div>
+                <!-- Item 2 - Cập nhật ảnh placeholder -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="464136389_539080702154128_4497630776967372659_n-819x1024.jpg" alt="Latte" class="w-full h-65 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-900">Latte Chuối</h3>
+                        <p class="text-gray-600 mb-4">Sự kết hợp hoàn hảo giữa espresso và sữa chuối, mang lại cảm giác ấm áp và dịu nhẹ.</p>
+                        <span class="text-orange-600 font-bold text-xl">50.000 VNĐ</span>
+                    </div>
+                </div>
+                <!-- Item 3 - Cập nhật ảnh placeholder -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="475856744_608369128558618_5960778874673247301_n.jpg" alt="Espresso" class="w-full h-65 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-900">Espresso</h3>
+                        <p class="text-gray-600 mb-4">Ly espresso nguyên chất, đánh thức mọi giác quan với hương vị mạnh mẽ.</p>
+                        <span class="text-orange-600 font-bold text-xl">35.000 VNĐ</span>
+                    </div>
+                </div>
+                 <!-- Item 4 - Cập nhật ảnh placeholder -->
+                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="487281978_648114767917387_6665742544640265695_n.jpg" alt="Trà Đào" class="w-full h-65 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-900">Matcha Latte</h3>
+                        <p class="text-gray-600 mb-4">Thức uống giải khát tuyệt vời với vị matcha thơm lừng và sữa tươi béo ngọt.</p>
+                        <span class="text-orange-600 font-bold text-xl">50.000 VNĐ</span>
+                    </div>
+                </div>
+                <!-- Item 5 - Cập nhật ảnh placeholder -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="480430100_619840300744834_2850144654658980905_n.jpg" alt="Bánh Ngọt" class="w-full h-45 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-900">Khoai Môn Dừa Non</h3>
+                        <p class="text-gray-600 mb-4">Thức uống vui miệng với sự kết hợp giữa khoai môn nghiền và sữa dừa non.</p>
+                        <span class="text-orange-600 font-bold text-xl">60.000 VNĐ</span>
+                    </div>
+                </div>
+                <!-- Item 6 - Cập nhật ảnh placeholder -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="479027797_616504454411752_1636131020613593488_n.jpg" alt="Sinh Tố" class="w-full h-65 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-900">Trà sữa chôm chôm</h3>
+                        <p class="text-gray-600 mb-4">Sự kết hợp ngọt ngào giữa chôm chôm và trà sửa, sự lựa chọn tuyệt vời cho ngày hè.</p>
+                        <span class="text-orange-600 font-bold text-xl">55.000 VNĐ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-8 rounded-full shadow-md transition-colors duration-300">
+                    Xem toàn bộ thực đơn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section (Phần cửa hàng) -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Tìm cửa hàng Katinat gần bạn</h2>
+            <div class="flex flex-col lg:flex-row items-center gap-8">
+                <div class="lg:w-1/2 w-full">
+                    <!-- Ảnh bản đồ placeholder -->
+                    <img src="Capture.PNG" alt="Bản đồ Katinat" class="w-full h-auto rounded-xl shadow-lg">
+                </div>
+                <div class="lg:w-1/2 w-full p-6 bg-orange-50 rounded-xl shadow-md">
+                    <h3 class="text-3xl font-semibold mb-4 text-gray-800">Hệ thống cửa hàng Katinat</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">Katinat có mặt tại nhiều địa điểm thuận tiện trên toàn quốc, mang đến cho bạn không gian lý tưởng để thư giãn và thưởng thức đồ uống yêu thích.</p>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mr-2 text-orange-600">
+                                <path d="M12 18.7c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/><path d="M12 22s-8-9-8-15a8 8 0 0 1 16 0c0 6-8 15-8 15z"/>
+                            </svg>
+                            <span>150 Đồng Khởi, Q.1, TP.HCM</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mr-2 text-orange-600">
+                                <path d="M12 18.7c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/><path d="M12 22s-8-9-8-15a8 8 0 0 1 16 0c0 6-8 15-8 15z"/>
+                            </svg>
+                            <span>28A Trần Hưng Đạo, Q.Hoàn Kiếm, Hà Nội</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mr-2 text-orange-600">
+                                <path d="M12 18.7c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/><path d="M12 22s-8-9-8-15a8 8 0 0 1 16 0c0 6-8 15-8 15z"/>
+                            </svg>
+                            <span>Và nhiều địa điểm khác trên toàn quốc...</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="mt-8 inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Tìm cửa hàng gần nhất
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Katinat -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-orange-400">Về Katinat</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Katinat Saigon Kafe mang đến không gian độc đáo và những trải nghiệm cà phê thú vị, nơi bạn có thể thư giãn và tận hưởng cuộc sống.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-orange-400">Liên kết nhanh</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Thực đơn</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cửa hàng</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Tin tức</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Tuyển dụng</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info / Social Media -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-orange-400">Liên hệ</h3>
+                <p class="text-gray-400 mb-2">Email: info@katinat.vn</p>
+                <p class="text-gray-400 mb-4">Điện thoại: 1900 6789</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <!-- Facebook Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="lucide lucide-facebook">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <!-- Instagram Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="lucide lucide-instagram">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <!-- Twitter Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="lucide lucide-twitter">
+                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17-19 11.6 1.4 2 2.9 3 2.9 3S2 21 2 20c-1.5-1-3-2.5-3-2.5 7.5-6 10-10 10-10s-.2-2.3 0-3c1.5-1.4 3-2 3-2 2-.5 4-1 4-1H22V4Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 text-center mt-8 text-gray-500 text-sm">
+            &copy; Katinat Saigon Kafé 2022| All rights reserved. Website by katinat.
+        </div>
+    </footer>
+
+    <!-- JavaScript cho Mobile Menu và Hero Slider -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Logic cho Mobile Menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('open');
+                });
+
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                    });
+                });
+            }
+
+            // Logic cho Hero Image Slider
+            const sliderImages = document.querySelectorAll('#hero-slider .slider-image');
+            let currentImageIndex = 0;
+
+            function showNextImage() {
+                // Ẩn ảnh hiện tại
+                sliderImages[currentImageIndex].classList.remove('active');
+
+                // Chuyển sang ảnh tiếp theo, nếu hết thì quay về đầu
+                currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+
+                // Hiển thị ảnh tiếp theo
+                sliderImages[currentImageIndex].classList.add('active');
+            }
+
+            // Bắt đầu thanh trượt sau 3 giây (3000ms)
+            // Mỗi 5 giây (5000ms) sẽ chuyển ảnh
+            setTimeout(() => {
+                setInterval(showNextImage, 5000);
+            }, 3000); // Đợi 3 giây trước khi bắt đầu chuyển ảnh đầu tiên
+        });
+    </script>
+</body>
+</html>
